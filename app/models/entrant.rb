@@ -12,8 +12,13 @@ class Entrant
     order: [:"event.o".asc],
     after_add: :update_total,
     after_remove: :update_total
+  embeds_one :race, class_name: "RaceRef"
 
   def update_total result
     self.secs = results.reduce(0){|sum, res| sum+res.secs}
+  end
+
+  def the_race
+    self.race.race
   end
 end
