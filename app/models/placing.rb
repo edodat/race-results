@@ -7,7 +7,7 @@ class Placing
   end
 
   def mongoize
-    { name: @name, place: @place}
+    { name: @name, place: @place }
   end
 
   def self.mongoize object

@@ -49,6 +49,9 @@ class Entrant
     self.race.race
   end
 
+  scope :upcoming, ->{ where(:"race.date".gte=>Date.current) }
+  scope :past, ->{ where(:"race.date".lt=>Date.current) }
+
   RESULTS = { "swim"=>SwimResult,
               "t1"=>LegResult,
               "bike"=>BikeResult,
